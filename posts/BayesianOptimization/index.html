@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+   <link rel="stylesheet" href="/libs/highlight/styles/github.min.css">
+   
+  <link rel="stylesheet" href="/css/franklin.css">
+  <link rel="stylesheet" href="/css/basic.css">
+  <link rel="icon" href="/assets/favicon.png">
+   <title>GSoC'23: Bayesian optimization in Julia</title>  
+</head>
+<body>
+  <header>
+<div class="blog-name"><a href="/"> Mathematics &amp; software </a></div>
+<nav>
+  <ul>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/">Blog entries</a></li> 
+  </ul>
+  <img src="/assets/hamburger.svg" id="menu-icon">
+</nav>
+</header>
+
+
+<!-- Content appended here -->
+<div class="franklin-content"><h1 id="gsoc23_bayesian_optimization_in_julia"><a href="#gsoc23_bayesian_optimization_in_julia" class="header-anchor">GSoC&#39;23: Bayesian optimization in Julia</a></h1>
+<p><em>The following blog post is my final report for Google Summer of Code 2023.</em></p>
+<p><div class="franklin-toc"><ol><li><a href="#introduction">Introduction</a></li><li><a href="#preliminaries">Preliminaries</a><ol><li><a href="#bayesian_optimization_algorithms">Bayesian Optimization algorithms</a></li><li><a href="#trust_region_bayesian_optimization_algorithm">Trust Region Bayesian Optimization algorithm</a></li><li><a href="#gaussian_processes">Gaussian Processes</a></li></ol></li><li><a href="#project_tasks">Project Tasks</a></li><li><a href="#the_challenge">The Challenge</a></li><li><a href="#the_results">The Results</a><ol><li><a href="#abstractbayesianoptimizationjl">AbstractBayesianOptimization.jl</a></li><li><a href="#bayesianoptimizationjl">BayesianOptimization.jl</a></li><li><a href="#trustregionbayesianoptimizationjl">TrustRegionBayesianOptimization.jl</a></li></ol></li><li><a href="#moving_gp_surrogate_where_it_belongs">Moving GP surrogate where it belongs</a></li><li><a href="#summary">Summary</a></li><li><a href="#acknowledgements">Acknowledgements</a></li><li><a href="#references">References</a></li></ol></div> </p>
+<h2 id="introduction"><a href="#introduction" class="header-anchor">Introduction</a></h2>
+<p>In the following post, I describe my open source contributions to <em>The Julia Language</em> organization, supervised by Johanni Brea. The name of the project is «Implementing Scalable Bayesian Optimization in Julia». The initial project description can be found <a href="https://summerofcode.withgoogle.com/programs/2023/projects/oJe84fwV">here</a>.</p>
+<h2 id="preliminaries"><a href="#preliminaries" class="header-anchor">Preliminaries</a></h2>
+<p>Let me first briefly introduce the main concepts I will be often referring to.</p>
+<h3 id="bayesian_optimization_algorithms"><a href="#bayesian_optimization_algorithms" class="header-anchor">Bayesian Optimization algorithms</a></h3>
+<p>Bayesian optimization &#40;BO&#41; algorithms are sample efficient techniques for optimizing functions which exhibit one or more of the following properties:</p>
+<ul>
+<li><p>are expensive to evaluate, e.g, an evaluation might correspond to running a lab experiment</p>
+</li>
+<li><p>are restricted by a limited evaluation budget, e.g., as in crop breeding - one experiment per year</p>
+</li>
+<li><p>evaluations can be corrupted by noise</p>
+</li>
+<li><p>are non-convex</p>
+</li>
+<li><p>are black box function, i.e., they lack a closed-form expression</p>
+</li>
+</ul>
+<p>This class of functions contains many practical problems, e.g., from chemical engineering and materials discovery. A prominent use-case is automated configuration of algorithms, such as MILP solvers or tuning of hyper-parameters of machine learning models.</p>
+<p>BO is a family of algorithms based on iteratively adapting a random field, by which we mean a collection of random variables indexed by the domain of the objective function. The random field is a surrogate model that encodes our beliefs about the objective function throughout optimization.  Such a surrogate aggregates evaluations and is used for deciding where to evaluate the objective next.</p>
+<p>Traditional methods work well for lower dimensinal problems with continuous domains, as mentioned in &#40;<span class="bibref"><a href="#tut">A Tutorial on Bayesian Optimization</a></span>&#41;.</p>
+<p>If you are interested to learn more, please have a look at &#40;<span class="bibref"><a href="#tut">A Tutorial on Bayesian Optimization</a></span>&#41; and &#40;<span class="bibref"><a href="#garnett">Bayesian Optimization</a></span>&#41;.</p>
+<h3 id="trust_region_bayesian_optimization_algorithm"><a href="#trust_region_bayesian_optimization_algorithm" class="header-anchor">Trust Region Bayesian Optimization algorithm</a></h3>
+<p>Trust Region Bayesian Optimization &#40;TuRBO&#41; algorithm belongs to recent advances in BO that aim to work well in higher dimensions. The TuRBO algorithm was introduced in &#40;<span class="bibref"><a href="#turbo">Scalable Global Optimization via Local Bayesian Optimization</a></span>&#41;.</p>
+<p>The idea is to maintain local Gaussian process surrogates that are accurate inside respective trust regions that adapt in size and postion based on performance. </p>
+<p>This strategy aims to effectively deal with large posterior uncertainty in higher dimensional problems and related over exploration behavior occurring in traditional methods. Since the algorithm is not relying on one global model, it may use different values for hyperparameters in the local models and hence greatly improve modeling capabilities of heterogeneous functions.</p>
+<h3 id="gaussian_processes"><a href="#gaussian_processes" class="header-anchor">Gaussian Processes</a></h3>
+<p>Gaussian processes &#40;GPs&#41; constitute a family of stochastic processes that are widely used in BO and related fields. They represent a generalization of multi-variate Gaussian distribution into infinite dimensions.</p>
+<p>One important reason why they are so useful is that once we fix finitely many indices from the infinite index set and consider the joint distribution of random variables corresponding to those fixed indices, we get a multi-variate Gaussian random variable &#40;MVGRV&#41;. Hence, in practice we can work with simple MVGRVs that are however <em>automatically consistent</em> with the infinite dimensional model, existing purely in the conceptual world.</p>
+<h2 id="project_tasks"><a href="#project_tasks" class="header-anchor">Project Tasks</a></h2>
+<p>The project task was to implement TuRBO algorithm <em>and</em> integrate it into an existing package <code>BayesianOptimization.jl</code>. The author of this package and of the project proposal is my supervisor Johanni.</p>
+<h2 id="the_challenge"><a href="#the_challenge" class="header-anchor">The Challenge</a></h2>
+<p>Conceptually, given my background in math and sufficient Julia skills, implementing TuRBO should be pretty straightforward. I just need to invest time into: </p>
+<ul>
+<li><p>surveying the field, learning about BO</p>
+</li>
+<li><p>studying the paper, where TuRBO was described</p>
+</li>
+<li><p>studying existing implementations of TuRBO in other languages</p>
+</li>
+<li><p>researching potential dependencies &#40;implementations of GPs in Julia&#41;</p>
+</li>
+<li><p>putting pieces together, testing, documenting code</p>
+</li>
+</ul>
+<p>There are a few comments I would like to make at this point. </p>
+<p>Firstly, studying existing implementations is not a good idea, unless their license permits to reuse implementation tricks <em>under the terms you agree to accept</em>. By learning and implementing some fairly obvious but special tricks, I had to restrict the license of my TuRBO implementation, which would otherwise not have been necessary.</p>
+<p>Secondly, there is one important aspect missing. It should <em>integrate</em> well with existing software. And this is frankly the challenge because suddenly the task has changed into designing a modular, extendable system in which we can implement both TuRBO algorithm and traditional BO methods. The missing aspect I want to emphasize, is an overarching software engineering effort, which for me was a great learning opportunity.</p>
+<h2 id="the_results"><a href="#the_results" class="header-anchor">The Results</a></h2>
+<p>It turns out that the software engineering part in this case is highly mathematical in its nature. If you think about it, the question really is a question of a good abstract definition of a BO-like algorithm.</p>
+<p>The definition should be general enough to cover all BO-like algorithms but also concrete enough to be useful for implementation. This is in a complete analogy to math, where we wish to define objects that are general to include interesting examples but at the same time specific enough so that we can prove strong results.</p>
+<p>One way we can formalize optimization algorithms is to think of them as decision making algorithms under uncertainty. Each time an optimization algorithm proposes to evaluate the objective at some point, it has to make a decision based on some previously observed evaluations. For details on this formalization, please see the first chapter in &#40;<span class="bibref"><a href="#garnett">Bayesian Optimization</a></span>&#41;.</p>
+<p>This abstract view is very compatible with they way we can write generic code in Julia. The idea is to define abstract data types and formulate a prototypical BO-like algorithm using them. Each specific BO-like algorithm will provide its own concrete data types that are subtypes of the respective abstract types. Concrete building blocks are then correctly merged with the generic prototypical algorithm via multiple dispatch.</p>
+<p>The above structure results in code reuse and follows dependence inversion principle, where high level algorithms depend on abstractions that low-level modules implement.</p>
+<p>The redesigned structure consists of the following packages, all available in <a href="https://github.com/JuliaBayesianOptimization">JuliaBayesianOptimization</a> organization on github.</p>
+<ul>
+<li><p><code>AbstractBayesianOptimization.jl</code></p>
+</li>
+<li><p><code>BayesianOptimization.jl</code></p>
+</li>
+<li><p><code>TrustRegionBayesianOptimization.jl</code></p>
+</li>
+</ul>
+<p>In the following subsections, I will shortly describe them in more detail.</p>
+<h3 id="abstractbayesianoptimizationjl"><a href="#abstractbayesianoptimizationjl" class="header-anchor">AbstractBayesianOptimization.jl</a></h3>
+<p>This package formulates a prototypical BO algorithm using abstract building blocks. Currently it supports gradient free optimization only.</p>
+<p>In principle, up to some details, it implements the following loop</p>
+<pre><code class="julia hljs"><span class="hljs-keyword">while</span> run_optimization(dsm, oh)
+    xs = next_batch!(policy, dsm, oh)
+    ys = evaluate_objective!(oh, xs)
+    update!(dsm, oh, xs, ys)
+<span class="hljs-keyword">end</span></code></pre>
+<p>where <code>dsm</code> is an <code>AbstractDecisionSupportModel</code>, <code>oh</code> is an <code>AbstractOptimizationHelper</code> and <code>policy</code> is an <code>AbstractPolicy</code>.</p>
+<p>The role of a decision support model is to aggregate evaluations into some kind of model that is used by a policy to decide where to sample next. An optimization helper is logging best observed optimizer, history, overall time and normalizes the problem, i.e., transforms it into a maximization problem on a unit cube.</p>
+<p>By calling <code>next_batch&#33;</code>, we get an array of points where we evaluate the function next by calling <code>evaluate_objective&#33;</code>. A decision support model is subsequently updated with the new evaluations by calling <code>update&#33;</code>.</p>
+<p>A decision support model and a policy can maintain some state, but only related to their roles. If they need to access some optimization statistics, e.g., history, they do that using an optimization helper.</p>
+<p><code>AbstractBayesianOptimization.jl</code> comes with an <code>OptimizationHelper</code>, a subtype of <code>AbstractOptimizationHelper</code> that provides basic utilities for defining unconstrained problems and logging progress.</p>
+<p>This package formalizes what a prototypical BO-like algorithm is, normalizes input and provides a unified way for returning outputs.</p>
+<p>Current status:</p>
+<ul>
+<li><p>documented in code</p>
+</li>
+<li><p>well tested </p>
+</li>
+</ul>
+<p>Possible improvements:</p>
+<ul>
+<li><p>register package</p>
+</li>
+<li><p>add documentation website</p>
+</li>
+<li><p>add github actions</p>
+</li>
+<li><p>add support for constrained problems</p>
+<ul>
+<li><p>currently supports just gradient free optimization for unconstrained problems</p>
+</li>
+</ul>
+</li>
+<li><p>add verbosity levels for logging</p>
+</li>
+<li><p>add parallel objective evaluation</p>
+</li>
+<li><p>work on ask-tell interface</p>
+</li>
+</ul>
+<h3 id="bayesianoptimizationjl"><a href="#bayesianoptimizationjl" class="header-anchor">BayesianOptimization.jl</a></h3>
+<p>This package is refactoring current <code>BayesianOptimization.jl</code> package to fit the abstract framework developed in <code>AbstractBayesianOptimization.jl</code>. </p>
+<p>Obviously, it depends on <code>AbstractBayesianOptimization.jl</code> and defines <code>BasicGP</code> decision support model and various policies.</p>
+<p><code>BasicGP</code> maintains a global Gaussian process surrogate.</p>
+<p>Policies decide where to sample next by maximizing a so called acquisition function. An acquisition function is a function on the domain of the objective function and uses information from <code>BasicGP</code> to quantify how useful an evaluation at a point could be. </p>
+<p>In sense, we are searching for an optimal compromise between exploration and exploitation, i.e., sampling where we are uncertain about the objective and sampling where we expect high objective values, respectively. These are the two opposing concerns that drive the progress of global optimization. </p>
+<p>Acquisition functions are usually cheap to evaluate and to optimize and don&#39;t evaluate the objective function at all.</p>
+<p>Available acquisition functions:</p>
+<ul>
+<li><p>expected improvement</p>
+</li>
+<li><p>max mean</p>
+</li>
+<li><p>mutual information</p>
+</li>
+<li><p>probability of improvement</p>
+</li>
+<li><p>Thompson sampling</p>
+</li>
+<li><p>upper confidence bound</p>
+</li>
+</ul>
+<p>Current status: </p>
+<ul>
+<li><p>partly documented</p>
+</li>
+<li><p>not well tested but works on examples</p>
+</li>
+</ul>
+<p>Possible improvements:</p>
+<ul>
+<li><p>add tests</p>
+</li>
+<li><p>add documentation &amp; documentation website</p>
+</li>
+<li><p>add github actions</p>
+</li>
+<li><p>register package</p>
+</li>
+<li><p>depend on a more efficient optimization package for optimizing acquisition functions</p>
+</li>
+<li><p>improve defaults for optimizing acquisition functions</p>
+</li>
+<li><p>add new acquisition functions</p>
+</li>
+<li><p>add <code>Base.show</code> methods</p>
+</li>
+<li><p>add verbosity levels for logging</p>
+</li>
+<li><p>integrate logging with <code>AbstractBayesianOptimization.jl</code></p>
+</li>
+</ul>
+<h3 id="trustregionbayesianoptimizationjl"><a href="#trustregionbayesianoptimizationjl" class="header-anchor">TrustRegionBayesianOptimization.jl</a></h3>
+<p>This package implements the TuRBO algorithm. It builds on <code>AbstractBayesianOptimization.jl</code> and defines a decision support model <code>Turbo</code> and a policy <code>TurboPolicy</code>.</p>
+<p>Since there are too many details to TuRBO algorithm, I refer the reader to the original source, &#40;<span class="bibref"><a href="#turbo">Scalable Global Optimization via Local Bayesian Optimization</a></span>&#41;, and the actual implementation.</p>
+<p>Unfortunately, for the reasons already mentioned, it carries a restrictive license.</p>
+<p>Current status:</p>
+<ul>
+<li><p>provides basic documentation</p>
+</li>
+<li><p>not well tested but works on examples</p>
+</li>
+</ul>
+<p>Possible improvements:</p>
+<ul>
+<li><p>register package</p>
+</li>
+<li><p>add tests</p>
+</li>
+<li><p>add documentation &amp; documentation website</p>
+</li>
+<li><p>add github actions</p>
+</li>
+<li><p>test and benchmark against BOTorch implementation available <a href="https://botorch.org/tutorials/turbo_1">here</a></p>
+</li>
+<li><p>test and benchmark against the official Python <a href="https://github.com/uber-research/TuRBO/tree/master">code-release</a></p>
+</li>
+</ul>
+<h2 id="moving_gp_surrogate_where_it_belongs"><a href="#moving_gp_surrogate_where_it_belongs" class="header-anchor">Moving GP surrogate where it belongs</a></h2>
+<p>TuRBO as well as traditional BO methods depend crucially on GPs with hyperparameter optimization. Fortunately, there is a package <code>AbstractGPs.jl</code> that provides tools for working with GPs. </p>
+<p>Initially, TuRBO relied on <code>AbstractGPs.jl</code> directly and included some utilities for working with <code>AbstractGPs.jl</code>. These utilities however could be useful for other projects as well, and so we thought we need to move our GP surrogate out of the project.</p>
+<p>The package <code>Surrogates.jl</code> formalizes via <code>AbstractSurrogate</code> interface what a deterministic surrogate is. As we would like to integrate our GP surrogate into an existing system of surrogates, we needed to rework the formalization of a surrogate to include stochastic surrogates too.</p>
+<p>Currently this formalization is still in progress, happening inside <code>SurrogatesBase.jl</code> available in  <a href="https://github.com/SciML/SurrogatesBase.jl">SciML organization</a> on github.</p>
+<p>At the moment, the reworked version of <code>BayesianOptimization.jl</code> depends on our version of <code>SurrogatesAbstractGPs.jl</code> on branch <code>at_point</code> &#40;available <a href="https://github.com/JuliaBayesianOptimization/SurrogatesAbstractGPs.jl">here</a>&#41; that refactors existing <code>SurrogatesAbstractGPs.jl</code> from SciML org, available <a href="https://github.com/SciML/Surrogates.jl/tree/e6aa022e612ac57228506e625c662438d385e69d/lib/SurrogatesAbstractGPs">here</a>. Our version of <code>SurrogatesAbstractGPs.jl</code> on branch <code>at_point</code> depends on our version of <code>SurrogatesBase.jl</code> on branch <code>at_point</code> available <a href="https://github.com/samuelbelko/SurrogatesBase.jl">here</a>.</p>
+<p><code>TrustRegionBayesianOptimization.jl</code> depends on our version of <code>SurrogatesAbstractGPs.jl</code> too, but on branch <code>param-abstract-type</code>. Our version of <code>SurrogatesAbstractGPs.jl</code> on branch <code>param-abstract-type</code> depends on <code>SurrogatesBase.jl</code> on branch <code>param-abstract-type</code>.</p>
+<p>This maximally confusing dependence on branches allows me to develop the main software further and just reflects the work-in-progress nature of the project.</p>
+<h2 id="summary"><a href="#summary" class="header-anchor">Summary</a></h2>
+<p>GSoC&#39;23 has been a super cool opportunity to learn some hands-on development in Julia. In particular I learned a great deal about structuring and developing mathematical software packages. To my own surprise, writing generic Julia code is in some ways analogous to how mathematical formalisms work.</p>
+<h2 id="acknowledgements"><a href="#acknowledgements" class="header-anchor">Acknowledgements</a></h2>
+<p>Thanks to Johanni Brea for interesting discussions, feedback and many valuable ideas. And of course many thanks to GSoC team at Google.</p>
+<h2 id="references"><a href="#references" class="header-anchor">References</a></h2>
+<ul>
+<li><p><a id="tut" class="anchor"></a> Peter I. Frazier.  A Tutorial on Bayesian Optimization. 2018. <a href="https://arxiv.org/abs/1807.02811">arXiv</a></p>
+</li>
+<li><p><a id="garnett" class="anchor"></a> Roman Garnett, Bayesian Optimization. 2023. Cambridge University Press. <a href="https://bayesoptbook.com/">bayesoptbook.com</a></p>
+</li>
+<li><p><a id="turbo" class="anchor"></a> David Eriksson, Michael Pearce, Jacob Gardner, Ryan D. Turner, Matthias Poloczek. Scalable Global Optimization via Local Bayesian Optimization. 2019. <a href="https://proceedings.neurips.cc/paper/2019/hash/6c990b7aca7bc7058f5e98ea909e924b-Abstract.html">NeurIPS</a></p>
+</li>
+</ul>
+<div class="page-foot">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> Samuel Belko. Last modified: September 26, 2023.
+    Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+</div>
+</div><!-- CONTENT ENDS HERE -->
+    
+    
+        <script src="/libs/highlight/highlight.min.js"></script>
+<script>hljs.highlightAll();hljs.configure({tabReplace: '    '});</script>
+
+    
+  </body>
+</html>
