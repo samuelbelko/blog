@@ -212,11 +212,11 @@ This maximally confusing dependence on branches allows me to develop the main so
 
 ## Summary
 
-GSoC'23 has been a super cool opportunity to learn some hands-on development in Julia. In particular I learned a great deal about structuring and developing mathematical software packages. To my own surprise, writing generic Julia code is in some ways analogous to how mathematical formalisms work.
+GSoC'23 has been a super cool opportunity to learn some hands-on development in Julia. In particular I learned a great deal about structuring and developing mathematical software packages. To my own surprise, writing generic Julia code is in some ways analogous to how mathematical frameworks work.
 
 ## Acknowledgements
 
-Thanks to Johanni Brea for interesting discussions, feedback and many valuable ideas. And of course many thanks to GSoC team at Google.
+I would like to thank Johanni Brea for interesting discussions, feedback and many valuable ideas. And of course many thanks to GSoC team at Google.
 
 ## References
 
