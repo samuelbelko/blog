@@ -82,7 +82,7 @@
 <h2 id="the_results"><a href="#the_results" class="header-anchor">The Results</a></h2>
 <p>It turns out that the software engineering part in this case is highly mathematical in its nature. If you think about it, the question really is a question of a good abstract definition of a BO-like algorithm.</p>
 <p>The definition should be general enough to cover all BO-like algorithms but also concrete enough to be useful for implementation. This is in a complete analogy to math, where we wish to define objects that are general enough to include interesting examples but at the same time specific enough so that we can prove strong results.</p>
-<p>This abstract view is very compatible with they way we can write generic code in Julia. The idea is to define abstract data types and formulate a prototypical BO-like algorithm using them. Each specific BO-like algorithm will provide its own concrete data types that are subtypes of the respective abstract types. Concrete building blocks are then correctly merged with the generic prototypical algorithm via multiple dispatch. The analogy of multiple dispatch in math is that valid claims for general objects still hold for more specific objects of the same kind and by concretizing we can get stronger results, i.e., exploit additional structure arising from extra assumptions defining a refined theoretical context.</p>
+<p>This abstract view is very compatible with the way we can write generic code in Julia. The idea is to define abstract data types and formulate a prototypical BO-like algorithm using them. Each specific BO-like algorithm will provide its own concrete data types that are subtypes of the respective abstract types. Concrete building blocks are then correctly merged with the generic prototypical algorithm via multiple dispatch. The analogy of multiple dispatch in math is that valid claims for general objects still hold for more specific objects of the same kind and by concretizing we can get stronger results, i.e., exploit additional structure arising from extra assumptions.</p>
 <p>The above structure results in code reuse and follows dependence inversion principle, where high level algorithms depend on abstractions that low-level modules implement.</p>
 <p>One way we can abstractly formalize optimization algorithms is to think of them as decision making algorithms under uncertainty. Each time an optimization algorithm proposes to evaluate the objective function at some point, it has to make a decision based on some previously observed and possibly not too many evaluations. For details on this formalization, please see the first chapter in &#40;<span class="bibref"><a href="#garnett">Bayesian Optimization</a></span>&#41;.</p>
 <p>The resulting project structure consists of the following packages, all available in <a href="https://github.com/JuliaBayesianOptimization">JuliaBayesianOptimization</a> organization on github.</p>
@@ -96,7 +96,7 @@
 </ul>
 <p>In the following subsections, I will shortly describe them in more detail.</p>
 <h3 id="abstractbayesianoptimizationjl"><a href="#abstractbayesianoptimizationjl" class="header-anchor">AbstractBayesianOptimization.jl</a></h3>
-<p>This package formulates a prototypical BO algorithm using abstract building blocks. Currently it supports gradient free optimization only.</p>
+<p>This package formulates a prototypical BO algorithm using abstract building blocks. Currently it only supports gradient free optimization.</p>
 <p>In principle, up to some details, it implements the following loop</p>
 <pre><code class="julia hljs"><span class="hljs-keyword">while</span> run_optimization(dsm, oh)
     xs = next_batch!(policy, dsm, oh)
@@ -105,10 +105,10 @@
 <span class="hljs-keyword">end</span></code></pre>
 <p>where <code>dsm</code> is an <code>AbstractDecisionSupportModel</code>, <code>oh</code> is an <code>AbstractOptimizationHelper</code> and <code>policy</code> is an <code>AbstractPolicy</code>.</p>
 <p>The role of a decision support model is to aggregate evaluations into some kind of model that is used by a policy to decide where to sample next. An optimization helper is logging best observed optimizer, history, overall time and normalizes the problem, i.e., transforms it into a maximization problem on a unit cube.</p>
-<p>By calling <code>next_batch&#33;</code>, we get an array of points where we evaluate the function next by calling <code>evaluate_objective&#33;</code>. A decision support model is subsequently updated with the new evaluations by calling <code>update&#33;</code>. The loop runs as long as <code>run_optimization&#40;dsm, oh&#41;</code> returns true, e.g., as long as there is sufficient evaluation budget left.</p>
+<p>By calling <code>next_batch&#33;</code>, we get an array of points at which we evaluate the objective function next by calling <code>evaluate_objective&#33;</code>. A decision support model is subsequently updated with the new evaluations by calling <code>update&#33;</code>. The loop runs as long as <code>run_optimization&#40;dsm, oh&#41;</code> returns true, e.g., as long as there is sufficient evaluation budget left.</p>
 <p>A decision support model and a policy can maintain some state, but only related to their roles. If they need to access some optimization statistics, e.g., history, they do so by using an optimization helper.</p>
 <p><code>AbstractBayesianOptimization.jl</code> comes with an <code>OptimizationHelper</code>, a subtype of <code>AbstractOptimizationHelper</code> that provides basic utilities for defining unconstrained problems and logging progress.</p>
-<p>This package formalizes what a prototypical BO-like algorithm is, normalizes input and provides a unified way for returning outputs.</p>
+<p>The <code>AbstractBayesianOptimization.jl</code> package formalizes what a prototypical BO-like algorithm is, normalizes input and provides a unified way for getting outputs.</p>
 <p>Current status:</p>
 <ul>
 <li><p>documented in code</p>
@@ -237,7 +237,7 @@
 </li>
 </ul>
 <div class="page-foot">
-    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> Samuel Belko. Last modified: September 27, 2023.
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> Samuel Belko. Last modified: September 28, 2023.
     Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
 </div>
 </div><!-- CONTENT ENDS HERE -->
