@@ -99,7 +99,7 @@ In the following subsections, I will shortly describe them in more detail.
 ### AbstractBayesianOptimization.jl
 
 
-This package formulates a prototypical BO algorithm using abstract building blocks. Currently it supports gradient free optimization only.
+This package formulates a prototypical BO algorithm using abstract building blocks. Currently it only supports gradient free optimization.
 
 In principle, up to some details, it implements the following loop
 
@@ -115,13 +115,13 @@ where `dsm` is an `AbstractDecisionSupportModel`, `oh` is an `AbstractOptimizati
 
 The role of a decision support model is to aggregate evaluations into some kind of model that is used by a policy to decide where to sample next. An optimization helper is logging best observed optimizer, history, overall time and normalizes the problem, i.e., transforms it into a maximization problem on a unit cube.
 
-By calling `next_batch!`, we get an array of points where we evaluate the function next by calling `evaluate_objective!`. A decision support model is subsequently updated with the new evaluations by calling `update!`. The loop runs as long as `run_optimization(dsm, oh)` returns true, e.g., as long as there is sufficient evaluation budget left.
+By calling `next_batch!`, we get an array of points at which we evaluate the objective function next by calling `evaluate_objective!`. A decision support model is subsequently updated with the new evaluations by calling `update!`. The loop runs as long as `run_optimization(dsm, oh)` returns true, e.g., as long as there is sufficient evaluation budget left.
 
 A decision support model and a policy can maintain some state, but only related to their roles. If they need to access some optimization statistics, e.g., history, they do so by using an optimization helper.
 
 `AbstractBayesianOptimization.jl` comes with an `OptimizationHelper`, a subtype of `AbstractOptimizationHelper` that provides basic utilities for defining unconstrained problems and logging progress.
 
-This package formalizes what a prototypical BO-like algorithm is, normalizes input and provides a unified way for returning outputs.
+The `AbstractBayesianOptimization.jl` package formalizes what a prototypical BO-like algorithm is, normalizes input and provides a unified way for getting outputs.
 
 Current status:
 - documented in code
