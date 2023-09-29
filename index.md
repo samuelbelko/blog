@@ -2,4 +2,5 @@
 
 # Blog entries
 
-- [GSoC'23: Bayesian optimization in Julia](/posts/BayesianOptimization/)
+- [Some Reasons for Studying Math](/posts/SomeReasonsForStudyingMath/)\blogdate{(29 Sep 2023)}
+- [GSoC'23: Bayesian optimization in Julia](/posts/BayesianOptimization/)\blogdate{(25 Sep 2023)}

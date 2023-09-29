@@ -27,3 +27,5 @@ Add here global latex commands to use throughout your pages.
 -->
 \newcommand{\R}{\mathbb R}
 \newcommand{\scal}[1]{\langle #1 \rangle}
+
+\newcommand{\blogdate}[1]{~~~<span style="color: #a6a2a0; font-style: italic;font-size: 90%;"> #1</span>~~~}
