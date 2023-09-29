@@ -2,6 +2,8 @@
 
 # GSoC'23: Bayesian Optimization in Julia
 
+By **Samuel Belko**, published on September 25, 2023.
+
 *The following blog post is my final report for Google Summer of Code 2023.*
 
 \tableofcontents <!-- you can use \toc as well -->
