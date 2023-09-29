@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="/css/franklin.css">
   <link rel="stylesheet" href="/css/basic.css">
   <link rel="icon" href="/assets/favicon.png">
-   <title>GSoC'23: Bayesian optimization in Julia</title>  
+   <title>GSoC'23: Bayesian Optimization in Julia</title>  
 </head>
 <body>
   <header>
@@ -25,7 +25,7 @@
 
 
 <!-- Content appended here -->
-<div class="franklin-content"><h1 id="gsoc23_bayesian_optimization_in_julia"><a href="#gsoc23_bayesian_optimization_in_julia" class="header-anchor">GSoC&#39;23: Bayesian optimization in Julia</a></h1>
+<div class="franklin-content"><h1 id="gsoc23_bayesian_optimization_in_julia"><a href="#gsoc23_bayesian_optimization_in_julia" class="header-anchor">GSoC&#39;23: Bayesian Optimization in Julia</a></h1>
 <p><em>The following blog post is my final report for Google Summer of Code 2023.</em></p>
 <p><div class="franklin-toc"><ol><li><a href="#introduction">Introduction</a></li><li><a href="#preliminaries">Preliminaries</a><ol><li><a href="#gaussian_processes">Gaussian Processes</a></li><li><a href="#bayesian_optimization_algorithms">Bayesian Optimization algorithms</a></li><li><a href="#trust_region_bayesian_optimization_algorithm">Trust Region Bayesian Optimization algorithm</a></li></ol></li><li><a href="#project_tasks">Project Tasks</a></li><li><a href="#the_challenge">The Challenge</a></li><li><a href="#the_results">The Results</a><ol><li><a href="#abstractbayesianoptimizationjl">AbstractBayesianOptimization.jl</a></li><li><a href="#bayesianoptimizationjl">BayesianOptimization.jl</a></li><li><a href="#trustregionbayesianoptimizationjl">TrustRegionBayesianOptimization.jl</a></li></ol></li><li><a href="#moving_gp_surrogate_where_it_belongs">Moving GP surrogate where it belongs</a></li><li><a href="#summary">Summary</a></li><li><a href="#acknowledgements">Acknowledgements</a></li><li><a href="#references">References</a></li></ol></div> </p>
 <h2 id="introduction"><a href="#introduction" class="header-anchor">Introduction</a></h2>
@@ -81,7 +81,7 @@
 <p>Secondly, there is one important aspect missing. It should <em>integrate</em> well with existing software. And this is frankly the challenge because suddenly the task has changed into designing a modular, extendable system in which we can implement both TuRBO algorithm and traditional BO methods. The missing aspect I want to emphasize, is an <em>overarching software engineering effort</em>, which for me was a great learning opportunity.</p>
 <h2 id="the_results"><a href="#the_results" class="header-anchor">The Results</a></h2>
 <p>It turns out that the software engineering part in this case is highly mathematical in its nature. If you think about it, the question really is a question of a good abstract definition of a BO-like algorithm.</p>
-<p>The definition should be general enough to cover all BO-like algorithms but also concrete enough to be useful for implementation. This is in a complete analogy to math, where we wish to define objects that are general enough to include interesting examples but at the same time specific enough so that we can prove strong results.</p>
+<p>The definition should be general enough to cover all BO-like algorithms but also concrete enough to be useful for implementation. This is in a complete analogy to math, where we wish to define objects that are general enough to include interesting examples but at the same time specific enough so that we can prove strong results<sup id="fnref:1"><a href="#fndef:1" class="fnref">[1]</a></sup>.</p>
 <p>This abstract view is very compatible with the way we can write generic code in Julia. The idea is to define abstract data types and formulate a prototypical BO-like algorithm using them. Each specific BO-like algorithm will provide its own concrete data types that are subtypes of the respective abstract types. Concrete building blocks are then correctly merged with the generic prototypical algorithm via multiple dispatch. The analogy of multiple dispatch in math is that valid claims for general objects still hold for more specific objects of the same kind and by concretizing we can get stronger results, i.e., exploit additional structure arising from extra assumptions.</p>
 <p>The above structure results in code reuse and follows dependence inversion principle, where high level algorithms depend on abstractions that low-level modules implement.</p>
 <p>One way we can abstractly formalize optimization algorithms is to think of them as decision making algorithms under uncertainty. Each time an optimization algorithm proposes to evaluate the objective function at some point, it has to make a decision based on some previously observed and possibly not too many evaluations. For details on this formalization, please see the first chapter in &#40;<span class="bibref"><a href="#garnett">Bayesian Optimization</a></span>&#41;.</p>
@@ -236,8 +236,15 @@
 <li><p><a id="turbo" class="anchor"></a> David Eriksson, Michael Pearce, Jacob Gardner, Ryan D. Turner, Matthias Poloczek. Scalable Global Optimization via Local Bayesian Optimization. 2019. <a href="https://proceedings.neurips.cc/paper/2019/hash/6c990b7aca7bc7058f5e98ea909e924b-Abstract.html">NeurIPS</a></p>
 </li>
 </ul>
+<table class="fndef" id="fndef:1">
+    <tr>
+        <td class="fndef-backref"><a href="#fnref:1">[1]</a></td>
+        <td class="fndef-content">An idea often emphasized by professor Noam Berger in his classes.</td>
+    </tr>
+</table>
+
 <div class="page-foot">
-    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> Samuel Belko. Last modified: September 28, 2023.
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> Samuel Belko. Last modified: September 29, 2023.
     Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
 </div>
 </div><!-- CONTENT ENDS HERE -->
