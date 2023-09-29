@@ -1,6 +1,6 @@
-@def title = "GSoC'23: Bayesian optimization in Julia"
+@def title = "GSoC'23: Bayesian Optimization in Julia"
 
-# GSoC'23: Bayesian optimization in Julia
+# GSoC'23: Bayesian Optimization in Julia
 
 *The following blog post is my final report for Google Summer of Code 2023.*
 
