@@ -79,7 +79,7 @@ Secondly, there is one important aspect missing. It should *integrate* well with
 
 It turns out that the software engineering part in this case is highly mathematical in its nature. If you think about it, the question really is a question of a good abstract definition of a BO-like algorithm.
 
-The definition should be general enough to cover all BO-like algorithms but also concrete enough to be useful for implementation. This is in a complete analogy to math, where we wish to define objects that are general enough to include interesting examples but at the same time specific enough so that we can prove strong results.
+The definition should be general enough to cover all BO-like algorithms but also concrete enough to be useful for implementation. This is in a complete analogy to math, where we wish to define objects that are general enough to include interesting examples but at the same time specific enough so that we can prove strong results[^1].
 
 This abstract view is very compatible with the way we can write generic code in Julia. The idea is to define abstract data types and formulate a prototypical BO-like algorithm using them. Each specific BO-like algorithm will provide its own concrete data types that are subtypes of the respective abstract types. Concrete building blocks are then correctly merged with the generic prototypical algorithm via multiple dispatch. The analogy of multiple dispatch in math is that valid claims for general objects still hold for more specific objects of the same kind and by concretizing we can get stronger results, i.e., exploit additional structure arising from extra assumptions.
 
@@ -94,7 +94,6 @@ The resulting project structure consists of the following packages, all availabl
 - `TrustRegionBayesianOptimization.jl`
 
 In the following subsections, I will shortly describe them in more detail.
-
 
 ### AbstractBayesianOptimization.jl
 
@@ -229,3 +228,5 @@ I would like to thank Johanni Brea for interesting discussions, feedback and man
 - \biblabel{Turbo}{Scalable Global Optimization via Local Bayesian Optimization} David Eriksson, Michael Pearce, Jacob Gardner, Ryan D. Turner, Matthias Poloczek. Scalable Global Optimization via Local Bayesian Optimization. 2019. [NeurIPS](https://proceedings.neurips.cc/paper/2019/hash/6c990b7aca7bc7058f5e98ea909e924b-Abstract.html)
 <!-- - \biblabel{hands-on}{Hands-On Design Patterns and Best Practices with Julia} Tom Kwong. Hands-On Design Patterns and Best Practices with Julia. 2020. Packt. [Packt](https://www.packtpub.com/product/hands-on-design-patterns-and-best-practices-with-julia/9781838648817)
  -->
+
+[^1]: An idea often emphasized by professor Noam Berger in his classes.
