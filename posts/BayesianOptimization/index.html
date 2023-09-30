@@ -81,10 +81,10 @@
 <p>Firstly, studying existing implementations is not a good idea, unless their license permits to reuse implementation tricks <em>under the terms you agree to accept</em>. By learning and implementing some fairly obvious but special tricks, I had to restrict the license of my TuRBO implementation, which would otherwise not have been necessary.</p>
 <p>Secondly, there is one important aspect missing. It should <em>integrate</em> well with existing software. And this is frankly the challenge because suddenly the task has changed into designing a modular, extendable system in which we can implement both TuRBO algorithm and traditional BO methods. The missing aspect I want to emphasize, is an <em>overarching software engineering effort</em>, which for me was a great learning opportunity.</p>
 <h2 id="the_results"><a href="#the_results" class="header-anchor">The Results</a></h2>
-<p>It turns out that the software engineering part in this case is highly mathematical in its nature. If you think about it, the question really is a question of a good abstract definition of a BO-like algorithm.</p>
-<p>The definition should be general enough to cover all BO-like algorithms but also concrete enough to be useful for implementation. This is in a complete analogy to math, where we wish to define objects that are general enough to include interesting examples but at the same time specific enough so that we can prove strong results<sup id="fnref:1"><a href="#fndef:1" class="fnref">[1]</a></sup>.</p>
+<p>It turns out that the software engineering part in this case is highly mathematical in its nature. If you think about it, the question really is a question of a good abstract definition of a BO-like algorithm. The definition should be general enough to cover all BO-like algorithms but also concrete enough to be useful for the implementation.</p>
+<div class="colbox-blue">This is in a complete analogy to math, where we wish to define objects that are general enough to include interesting examples but at the same time specific enough so that we can prove strong results.<sup id="fnref:1"><a href="#fndef:1" class="fnref">[1]</a></sup></div>
 <p>This abstract view is very compatible with the way we can write generic code in Julia. The idea is to define abstract data types and formulate a prototypical BO-like algorithm using them. Each specific BO-like algorithm will provide its own concrete data types that are subtypes of the respective abstract types. Concrete building blocks are then correctly merged with the generic prototypical algorithm via multiple dispatch. The analogy of multiple dispatch in math is that valid claims for general objects still hold for more specific objects of the same kind and by concretizing we can get stronger results, i.e., exploit additional structure arising from extra assumptions.</p>
-<p>The above structure results in code reuse and follows dependence inversion principle, where high level algorithms depend on abstractions that low-level modules implement.</p>
+<p>The above design decision results in code reuse and follows dependence inversion principle, where high level algorithms depend on abstractions that low-level modules implement.</p>
 <p>One way we can abstractly formalize optimization algorithms is to think of them as decision making algorithms under uncertainty. Each time an optimization algorithm proposes to evaluate the objective function at some point, it has to make a decision based on some previously observed and possibly not too many evaluations. For details on this formalization, please see the first chapter in &#40;<span class="bibref"><a href="#garnett">Bayesian Optimization</a></span>&#41;.</p>
 <p>The resulting project structure consists of the following packages, all available in <a href="https://github.com/JuliaBayesianOptimization">JuliaBayesianOptimization</a> organization on github.</p>
 <ul>
@@ -245,7 +245,7 @@
 </table>
 
 <div class="page-foot">
-    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> Samuel Belko. Last modified: September 29, 2023.
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> Samuel Belko. Last modified: September 30, 2023.
     Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
 </div>
 </div><!-- CONTENT ENDS HERE -->
