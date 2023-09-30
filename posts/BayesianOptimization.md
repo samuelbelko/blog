@@ -79,13 +79,15 @@ Secondly, there is one important aspect missing. It should *integrate* well with
 
 ## The Results
 
-It turns out that the software engineering part in this case is highly mathematical in its nature. If you think about it, the question really is a question of a good abstract definition of a BO-like algorithm.
+It turns out that the software engineering part in this case is highly mathematical in its nature. If you think about it, the question really is a question of a good abstract definition of a BO-like algorithm. The definition should be general enough to cover all BO-like algorithms but also concrete enough to be useful for the implementation.
 
-The definition should be general enough to cover all BO-like algorithms but also concrete enough to be useful for implementation. This is in a complete analogy to math, where we wish to define objects that are general enough to include interesting examples but at the same time specific enough so that we can prove strong results[^1].
+@@colbox-blue
+This is in a complete analogy to math, where we wish to define objects that are general enough to include interesting examples but at the same time specific enough so that we can prove strong results.[^1]
+@@
 
 This abstract view is very compatible with the way we can write generic code in Julia. The idea is to define abstract data types and formulate a prototypical BO-like algorithm using them. Each specific BO-like algorithm will provide its own concrete data types that are subtypes of the respective abstract types. Concrete building blocks are then correctly merged with the generic prototypical algorithm via multiple dispatch. The analogy of multiple dispatch in math is that valid claims for general objects still hold for more specific objects of the same kind and by concretizing we can get stronger results, i.e., exploit additional structure arising from extra assumptions.
 
-The above structure results in code reuse and follows dependence inversion principle, where high level algorithms depend on abstractions that low-level modules implement.
+The above design decision results in code reuse and follows dependence inversion principle, where high level algorithms depend on abstractions that low-level modules implement.
 
 One way we can abstractly formalize optimization algorithms is to think of them as decision making algorithms under uncertainty. Each time an optimization algorithm proposes to evaluate the objective function at some point, it has to make a decision based on some previously observed and possibly not too many evaluations. For details on this formalization, please see the first chapter in (\cite{garnett}).
 
