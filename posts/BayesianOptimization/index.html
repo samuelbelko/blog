@@ -59,7 +59,7 @@
 <p>The idea is to maintain local Gaussian process surrogates that are accurate inside respective trust regions that adapt in size and postion based on performance. </p>
 <p>This strategy aims to effectively deal with large posterior uncertainty in higher dimensional problems and related over exploration behavior occurring in traditional methods. Since the algorithm is not relying on one global model, it may use different values for hyperparameters in the local models and hence greatly improve modeling capabilities of heterogeneous functions.</p>
 <h2 id="project_tasks"><a href="#project_tasks" class="header-anchor">Project Tasks</a></h2>
-<p>The project task was to implement TuRBO algorithm <em>and</em> integrate it into an existing package <code>BayesianOptimization.jl</code>. The author of this package and of the project proposal is my supervisor Johanni.</p>
+<p>The project task was to implement TuRBO algorithm <em>and</em> integrate it into an existing package <code>BayesianOptimization.jl</code>. The author of this package and of the project idea is my supervisor Johanni.</p>
 <h2 id="the_challenge"><a href="#the_challenge" class="header-anchor">The Challenge</a></h2>
 <p>Initially, I thought that given my background in math and sufficient Julia skills, working on the project tasks should be pretty straightforward. </p>
 <blockquote>
@@ -139,9 +139,9 @@
 </li>
 </ul>
 <h3 id="bayesianoptimizationjl"><a href="#bayesianoptimizationjl" class="header-anchor">BayesianOptimization.jl</a></h3>
-<p>This package is refactoring current <code>BayesianOptimization.jl</code> package to fit the abstract framework developed in <code>AbstractBayesianOptimization.jl</code>. </p>
-<p>Obviously, it depends on <code>AbstractBayesianOptimization.jl</code> and defines <code>BasicGP</code> decision support model and various policies.</p>
-<p><code>BasicGP</code> maintains a global Gaussian process surrogate.</p>
+<p>This package is refactoring the registered package <code>BayesianOptimization.jl</code>  available at <a href="https://github.com/jbrea/BayesianOptimization.jl">https://github.com/jbrea/BayesianOptimization.jl</a>, to fit the abstract framework developed in <code>AbstractBayesianOptimization.jl</code>. In particular, many code snippets were adopted verbatim.</p>
+<p>Obviously, it depends on <code>AbstractBayesianOptimization.jl</code>. This package defines a <code>BasicGP</code> decision support model and provides various policies that together cover many traditional methods in BO.</p>
+<p>The <code>BasicGP</code> decision support model maintains a global Gaussian process surrogate.</p>
 <p>Policies decide where to sample next by maximizing a so called acquisition function. An acquisition function is a function defined on the domain of the objective function and uses information from <code>BasicGP</code> to quantify how useful an evaluation at a point in the domain could be. </p>
 <p>In sense, we are searching for an optimal compromise between exploration and exploitation, i.e., sampling where we are uncertain about the objective and sampling where we expect high objective values, respectively. These are the two opposing concerns that drive the progress of global optimization. </p>
 <p>Acquisition functions are usually cheap to evaluate and to optimize and don&#39;t evaluate the objective function at all.</p>
@@ -245,7 +245,7 @@
 </table>
 
 <div class="page-foot">
-    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> Samuel Belko. Last modified: October 02, 2023.
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> Samuel Belko. Last modified: October 03, 2023.
     Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
 </div>
 </div><!-- CONTENT ENDS HERE -->
