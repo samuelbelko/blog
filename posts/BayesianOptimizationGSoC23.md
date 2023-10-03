@@ -144,7 +144,7 @@ Possible improvements:
 
 This package is refactoring the registered package `BayesianOptimization.jl`  available at [https://github.com/jbrea/BayesianOptimization.jl](https://github.com/jbrea/BayesianOptimization.jl), to fit the abstract framework developed in `AbstractBayesianOptimization.jl`. In particular, many code snippets were adopted verbatim.
 
-Obviously, it depends on `AbstractBayesianOptimization.jl`. This package defines a `BasicGP` decision support model and provides various policies that together cover many traditional methods in BO.
+This package defines a `BasicGP` decision support model and provides various policies that together cover many traditional methods in BO. Obviously, it depends on `AbstractBayesianOptimization.jl`.
 
 The `BasicGP` decision support model maintains a global Gaussian process surrogate.
 
