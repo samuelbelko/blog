@@ -140,7 +140,7 @@
 </ul>
 <h3 id="bayesianoptimizationjl"><a href="#bayesianoptimizationjl" class="header-anchor">BayesianOptimization.jl</a></h3>
 <p>This package is refactoring the registered package <code>BayesianOptimization.jl</code>  available at <a href="https://github.com/jbrea/BayesianOptimization.jl">https://github.com/jbrea/BayesianOptimization.jl</a>, to fit the abstract framework developed in <code>AbstractBayesianOptimization.jl</code>. In particular, many code snippets were adopted verbatim.</p>
-<p>Obviously, it depends on <code>AbstractBayesianOptimization.jl</code>. This package defines a <code>BasicGP</code> decision support model and provides various policies that together cover many traditional methods in BO.</p>
+<p>This package defines a <code>BasicGP</code> decision support model and provides various policies that together cover many traditional methods in BO. Obviously, it depends on <code>AbstractBayesianOptimization.jl</code>.</p>
 <p>The <code>BasicGP</code> decision support model maintains a global Gaussian process surrogate.</p>
 <p>Policies decide where to sample next by maximizing a so called acquisition function. An acquisition function is a function defined on the domain of the objective function and uses information from <code>BasicGP</code> to quantify how useful an evaluation at a point in the domain could be. </p>
 <p>In sense, we are searching for an optimal compromise between exploration and exploitation, i.e., sampling where we are uncertain about the objective and sampling where we expect high objective values, respectively. These are the two opposing concerns that drive the progress of global optimization. </p>
