@@ -55,7 +55,7 @@ This strategy aims to effectively deal with large posterior uncertainty in highe
 
 ## Project Tasks
 
-The project task was to implement TuRBO algorithm *and* integrate it into an existing package `BayesianOptimization.jl`. The author of this package and of the project proposal is my supervisor Johanni.
+The project task was to implement TuRBO algorithm *and* integrate it into an existing package `BayesianOptimization.jl`. The author of this package and of the project idea is my supervisor Johanni.
 
 ## The Challenge
 
@@ -142,11 +142,11 @@ Possible improvements:
 
 ###  BayesianOptimization.jl
 
-This package is refactoring current `BayesianOptimization.jl` package to fit the abstract framework developed in `AbstractBayesianOptimization.jl`. 
+This package is refactoring the registered package `BayesianOptimization.jl`  available at [https://github.com/jbrea/BayesianOptimization.jl](https://github.com/jbrea/BayesianOptimization.jl), to fit the abstract framework developed in `AbstractBayesianOptimization.jl`. In particular, many code snippets were adopted verbatim.
 
-Obviously, it depends on  `AbstractBayesianOptimization.jl` and defines `BasicGP` decision support model and various policies.
+Obviously, it depends on `AbstractBayesianOptimization.jl`. This package defines a `BasicGP` decision support model and provides various policies that together cover many traditional methods in BO.
 
-`BasicGP` maintains a global Gaussian process surrogate.
+The `BasicGP` decision support model maintains a global Gaussian process surrogate.
 
 Policies decide where to sample next by maximizing a so called acquisition function. An acquisition function is a function defined on the domain of the objective function and uses information from `BasicGP` to quantify how useful an evaluation at a point in the domain could be. 
 
