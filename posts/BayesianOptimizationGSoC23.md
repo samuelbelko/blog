@@ -18,13 +18,13 @@ In the following post, I describe my open source contributions to *The Julia Lan
 
 Let me first briefly introduce the main concepts I will be often referring to.
 
-### Gaussian Processes
+### Gaussian processes
 
 Gaussian processes (GPs) constitute a family of stochastic processes that are widely used in Bayesian optimization and related fields. They represent a generalization of multi-variate Gaussian distribution into infinite dimensions. Usually we introduce hyperparameters that define a subset of GPs that are in some way related and reasonable parametrized.
 
 One important reason why they are so useful is that once we fix finitely many indices from the infinite index set and consider the joint distribution of random variables corresponding to those fixed indices, we get a multi-variate Gaussian random variable (MVGRV). Hence, in practice we can work with simple MVGRVs that are however *automatically consistent* with the infinite dimensional model, existing purely in the conceptual world.
 
-### Bayesian Optimization algorithms
+### Bayesian optimization algorithms
 
 Bayesian optimization (BO) algorithms are sample efficient techniques for optimizing functions which exhibit one or more of the following properties:
 
@@ -53,11 +53,11 @@ The idea is to maintain local Gaussian process surrogates that are accurate insi
 This strategy aims to effectively deal with large posterior uncertainty in higher dimensional problems and related over exploration behavior occurring in traditional methods. Since the algorithm is not relying on one global model, it may use different values for hyperparameters in the local models and hence greatly improve modeling capabilities of heterogeneous functions.
 
 
-## Project Tasks
+## Project tasks
 
 The project task was to implement TuRBO algorithm *and* integrate it into an existing package `BayesianOptimization.jl`. The author of this package and of the project idea is my supervisor Johanni.
 
-## The Challenge
+## The challenge
 
 Initially, I thought that given my background in math and sufficient Julia skills, working on the project tasks should be pretty straightforward. 
 
@@ -77,7 +77,7 @@ Firstly, studying existing implementations is not a good idea, unless their lice
 Secondly, there is one important aspect missing. It should *integrate* well with existing software. And this is frankly the challenge because suddenly the task has changed into designing a modular, extendable system in which we can implement both TuRBO algorithm and traditional BO methods. The missing aspect I want to emphasize, is an *overarching software engineering effort*, which for me was a great learning opportunity.
 
 
-## The Results
+## The results
 
 It turns out that the software engineering part in this case is highly mathematical in its nature. If you think about it, the question really is a question of a good abstract definition of a BO-like algorithm. The definition should be general enough to cover all BO-like algorithms but also concrete enough to be useful for the implementation.
 
