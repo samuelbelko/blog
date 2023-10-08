@@ -39,7 +39,7 @@ This class of functions contains many practical problems, e.g., from chemical en
 BO is a family of algorithms based on iteratively adapting a random field, such as a GP. By a random field we mean a collection of random variables indexed by the domain of the objective function. The random field is a surrogate model that encodes our beliefs about the objective function throughout optimization. 
 Such a surrogate processes evaluations and this processed information is commonly used for defining an acquisition function, which quantifies the potential utility of evaluating the objective at a point in the domain. The next point where the algorithm evaluates the objective function is usually a maximizer of an acquisition function defined by the current information from the surrogate.
 
-Traditional methods work well for lower dimensinal problems with continuous domains, as mentioned in (\cite{tut}).
+Traditional methods work well for lower dimensional problems with continuous domains, as mentioned in (\cite{tut}).
 
 If you are interested to learn more, please have a look at (\cite{tut}) and (\cite{garnett}).
 
