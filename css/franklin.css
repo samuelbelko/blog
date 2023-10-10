@@ -8,6 +8,8 @@
   --small: 14px;
   --normal: 19px;
   --text-color: hsv(0, 0%, 20%);
+  --blue-background: #eef3f5;
+  --code-background: rgba(27,31,35,0.05);
 }
 
 /* ==================================================================
@@ -285,10 +287,10 @@ body { counter-reset: eqnum; }
     CODE & HIGHLIGHT.JS
 ================================================================== */
 
-code {
-  background-color: var(--block-background);
+.franklin-content code {
+  background-color: var(--code-background);
   padding: 0.1em 0.2em;
-  border-radius: 2px;
+  border-radius: 0;
   font-size: var(--small);
 }
 
@@ -323,7 +325,7 @@ code {
 ================================================================== */
 
 .franklin-content .colbox-blue {
-  background-color: #eef3f5;
+  background-color: var(--blue-background);
   padding-top: 5px;
   padding-right: 10px;
   padding-left: 10px;
