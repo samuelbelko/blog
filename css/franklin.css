@@ -292,7 +292,6 @@ body { counter-reset: eqnum; }
   padding: 0.1em 0.2em;
   border-radius: 0;
   font-size: var(--small);
-  border: 1px solid #a8a8a8;
 }
 
 /* .franklin-content code { */
