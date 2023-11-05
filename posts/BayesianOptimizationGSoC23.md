@@ -20,7 +20,7 @@ Let me first briefly introduce the main concepts I will be often referring to.
 
 ### Gaussian processes
 
-Gaussian processes (GPs) constitute a family of stochastic processes that are widely used in Bayesian optimization and related fields. They represent a generalization of multi-variate Gaussian distribution into infinite dimensions. Usually we introduce hyperparameters that define a subset of GPs that are in some way related and reasonable parametrized.
+Gaussian processes (GPs) constitute a family of stochastic processes that are widely used in Bayesian optimization and related fields. They represent a generalization of multi-variate Gaussian distribution into infinite dimensions. Usually we introduce hyperparameters that define a subset of GPs that are in some way related and reasonably parametrized.
 
 One important reason why they are so useful is that once we fix finitely many indices from the infinite index set and consider the joint distribution of random variables corresponding to those fixed indices, we get a multi-variate Gaussian random variable (MVGRV). Hence, in practice we can work with simple MVGRVs that are however *automatically consistent* with the infinite dimensional model, existing purely in the conceptual world.
 
