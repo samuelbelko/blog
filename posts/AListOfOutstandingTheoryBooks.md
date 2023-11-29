@@ -10,7 +10,7 @@ I noticed that usually textbooks in 3th, 4th or later editions are pretty good c
 
 My list is of course biased by my own interests. I don't claim to have read every book cover to cover, but with each one I spend enough many hours to know it definitely should be mentioned here.
 
-There are some good candidates that I omit for now, but I might add them later, once I have a better impression of them.
+There are some good candidates that I omit for now, but I might add them later once I have a more complete impression of them.
 
 **A list of outstanding theory books:**
 
