@@ -7,12 +7,14 @@ By **Samuel Belko**, published on September 29, 2023.
 Studying math can be a very satisfying activity, for me personally mostly because it provides unmatched:
 - **_usefulness_**
   - source of applicable methods
+  - improvement of general problem solving & communication skills 
   - foundation for science and R&D
 - **_aesthetic appeal_**
   - reduction to the essence
   - attention to detail
   - consistency, coherence
   - unexpected connections
+  - compositionality, extension of simpler objects by compatible structures
   - compact form via abstraction hierarchies
   - existence of many well-written theory expositions
 - **_mind-stretching concepts_**
