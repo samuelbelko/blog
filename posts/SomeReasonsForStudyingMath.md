@@ -29,4 +29,4 @@ Some other reasons include:
   - experiencing a compounding effect
 
 
-[^1] Please see discussion [What's a mathematician to do?](https://mathoverflow.net/questions/43690/whats-a-mathematician-to-do/44213#44213) for more.
+[^1]: Please see discussion [What's a mathematician to do?](https://mathoverflow.net/questions/43690/whats-a-mathematician-to-do/44213#44213) for more.
