@@ -4,13 +4,15 @@
 
 By **Samuel Belko**, published on September 29, 2023.
 
-Studying math can be a very satisfying activity, for me personally mostly because it provides unmatched:
+In my opinion, studying math should ideally make you a person that is able to *increase clarity* of a wide range of ideas.
+
+Some other reasons include:
 - **_usefulness_**
   - source of applicable methods
-  - foundation for science and R&D
+  - foundation for science & technological innovation
   - improvement of general problem solving & communication skills
   - becoming a person with a high standard for conceptual clarity
-  - developing an intuition for encoding patterns into suggestive notation & diagrams
+  - developing an intuition for encoding patterns into suggestive notation & diagrams that make it easier to understand a concept
 - **_aesthetic appeal_**
   - reduction to the essence
   - attention to detail
