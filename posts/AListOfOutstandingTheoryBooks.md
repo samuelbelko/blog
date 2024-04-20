@@ -14,7 +14,7 @@ There are some good candidates that I omit for now, but I might add them later o
 
 **A list of outstanding theory books:**
 
-- *Convex Optimization* Stephen Boyd and Lieven Vandenberghe. 2004.
+- *Convex Optimization.* Stephen Boyd and Lieven Vandenberghe. 2004.
 - *Probability theory--a comprehensive course.* Achim Klenke. Third Edition. 2020.
 - *Combinatorial optimization. Polyhedra and efficiency.* Alexander Schrijver. 2003
 - *Integer programming.*  Michele Conforti, Gérard Cornuéjols, Giacomo Zambelli. 2014.
