@@ -4,7 +4,7 @@
 
 By **Samuel Belko**, published on November 7, 2023.
 
-There are many math books out there, but some of them are truly impressive works. In this post, I would like to share a list of those that I personally admire for their consistency, attention to detail, and overall clarity of thought. 
+There are many math books out there, but some of them are truly impressive works. In this post, I would like to share a list of those that I personally admire for their consistency, attention to detail, surprising remarks and overall clarity of thought. 
 
 I noticed that usually textbooks in 3th, 4th or later editions are pretty good candidates for being outstanding theory expositions.
 
@@ -14,6 +14,7 @@ There are some good candidates that I omit for now, but I might add them later o
 
 **A list of outstanding theory books:**
 
+- *Convex Optimization* Stephen Boyd and Lieven Vandenberghe. 2004.
 - *Probability theory--a comprehensive course.* Achim Klenke. Third Edition. 2020.
 - *Combinatorial optimization. Polyhedra and efficiency.* Alexander Schrijver. 2003
 - *Integer programming.*  Michele Conforti, Gérard Cornuéjols, Giacomo Zambelli. 2014.
