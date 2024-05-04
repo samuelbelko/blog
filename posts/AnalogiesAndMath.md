@@ -4,7 +4,7 @@
 
 By **Samuel Belko**, published on May 4, 2024.
 
-I have read somewhere that math is a study of analogies. This became even more pronounced while attending a math talk, where someone in the audience asked about an analogy to a different but in some abstract way related concepts. Reflecting on the question, I realized that abstraction itself is defining an analogy.
+I have read somewhere that math is a study of analogies. This became even more pronounced while attending a math talk, where someone in the audience asked about an analogy to a different but in some abstract way related concept. Reflecting on the question, I realized that abstraction itself is defining an analogy.
 
 For instance, let's take one possible motivation for a definition of a group $(G, *)$ from algebra. Consider an equation
 
