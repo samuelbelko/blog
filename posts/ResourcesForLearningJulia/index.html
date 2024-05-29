@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="stylesheet" href="/css/franklin.css">
+  <link rel="stylesheet" href="/css/basic.css">
+  <link rel="icon" href="/assets/favicon.png">
+  <script data-goatcounter="https://bblog.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+   <title>Resources for Learning Julia</title>  
+</head>
+<body>
+  <header>
+<div class="blog-name"><a href="/"> Simple Complexity</a></div>
+<nav>
+  <ul>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/">Blog entries</a></li> 
+  </ul>
+  <img src="/assets/hamburger.svg" id="menu-icon">
+</nav>
+</header>
+
+
+<!-- Content appended here -->
+<div class="franklin-content"><h1 id="resources_for_learning_julia"><a href="#resources_for_learning_julia" class="header-anchor">Resources for Learning Julia</a></h1>
+<p>By <strong>Samuel Belko</strong>, published on May 28, 2024.</p>
+<p>I would like to share some good resources that helped me improve my coding skills and the overall experience with Julia. From what I know so far, it is a good idea to invest time into understanding the type system and multiple dispatch, since it is the way idiomatic &amp; performant Julia code is written.</p>
+<ul>
+<li><p><a href="https://book.sciml.ai/notes/02-Optimizing_Serial_Code/">SciML Book: optimizing serial code</a></p>
+<ul>
+<li><p>some of the topics covered</p>
+<ul>
+<li><p>memory related speedups</p>
+<ul>
+<li><p>avoid cache misses</p>
+</li>
+<li><p>column major indexing of matrices</p>
+</li>
+<li><p>stack vs heap</p>
+</li>
+<li><p>mutating a cache variable in place to avoid new allocations</p>
+</li>
+<li><p>using views instead of slicing an array</p>
+</li>
+<li><p>fusing loop operations with broadcasting to avoid allocations of temporary variables</p>
+</li>
+</ul>
+</li>
+<li><p>function specialization related speedups</p>
+<ul>
+<li><p>type inference inside functions &amp; type stability</p>
+</li>
+<li><p>compiler is building a different function for different combinations of input types that is specialized and only works for that type combination</p>
+</li>
+<li><p>type information is compile time information and values are runtime information, types needs to provide enough information to the compiler to generate efficient, specialized lowered code</p>
+</li>
+<li><p><em>multiple dispatch as a natural extension of just-in-time compilation</em></p>
+</li>
+<li><p>parametric types can create a family of <code>isbits</code> types</p>
+</li>
+<li><p>abstract types don&#39;t help the compiler &#40;but are useful for steering multiple dispatch&#41;</p>
+</li>
+<li><p>function barriers for dealing with type instability &#40;one dynamic dispatch call after which only static dispatch calls follow&#41;</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a href="https://www.oreilly.com/library/view/hands-on-design-patterns/9781838648817/">Hands-On Design Patterns and Best Practices with Julia</a></p>
+<ul>
+<li><p>some of the topics I found helpful</p>
+<ul>
+<li><p>semantic versioning</p>
+</li>
+<li><p>dependency inversion principle</p>
+</li>
+<li><p>function forwarding &amp; extending types by wrapping them</p>
+</li>
+<li><p>rules for <em>automatic</em> conversion between data types</p>
+</li>
+<li><p>array of structs vs struct of arrays</p>
+</li>
+<li><p>the holy traits pattern, singleton type dispatch</p>
+</li>
+<li><p>type piracy anti-pattern &#40;extending a third-party function without using own types in any of the function arguments&#41;</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a href="https://modernjuliaworkflows.github.io/">Modern Julia Workflows</a></p>
+<ul>
+<li><p>contains many good pointers to libraries and setups for a better coding experience, in particular</p>
+<ul>
+<li><p><a href="https://modernjuliaworkflows.github.io/writing/#development_workflow">development workflow</a></p>
+</li>
+<li><p><a href="https://modernjuliaworkflows.github.io/writing/#configuration">REPL startup config</a></p>
+</li>
+<li><p><a href="https://modernjuliaworkflows.github.io/sharing/#code_quality">code quality</a></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="page-foot">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> Samuel Belko. Last modified: May 29, 2024.
+    Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+</div>
+</div><!-- CONTENT ENDS HERE -->
+    
+    
+  </body>
+</html>
