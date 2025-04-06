@@ -2,6 +2,7 @@
 
 # Blog entries
 
+- [Are Mathematicians Software Engineers in Disguise?](/posts/AreMathematiciansSoftwareEngineers/)\blogdate{(6 April 2025)}
 - [Resources for Learning Julia](/posts/ResourcesForLearningJulia/)\blogdate{(28 May 2024)}
 - [Analogies and Math](/posts/AnalogiesAndMath/)\blogdate{(4 May 2024)}
 - [A List of Outstanding Theory Books](/posts/AListOfOutstandingTheoryBooks/)\blogdate{(7 Nov 2023)}
