@@ -29,21 +29,19 @@
 <div class="franklin-content"><h1 id="are_mathematicians_software_engineers_in_disguise"><a href="#are_mathematicians_software_engineers_in_disguise" class="header-anchor">Are Mathematicians Software Engineers in Disguise?</a></h1>
 <p>By <strong>Samuel Belko</strong>, published on April 6, 2025.</p>
 <blockquote>
-<p>Mathematics has always been about coming up with abstractions that enable us to think more efficiently, communicate precisely, solve hard problems, and reach a stable consensus as to whether our claims are justified.   Jeremy Avigad, in <sup id="fnref:1"><a href="#fndef:1" class="fnref">[1]</a></sup></p>
+<p>Mathematics has always been about coming up with abstractions that enable us to think more efficiently, communicate precisely, solve hard problems, and reach a stable consensus as to whether our claims are justified.   Jeremy Avigad, in &#40;<span class="bibref"><a href="#ja">Mathematics and the formal turn</a></span>&#41;</p>
 </blockquote>
 <p>There is a striking similiarity between extending a complicated codebase and writing down  complicated mathematical theories. The developer and mathematician are both challenged to come up with a structure that a human mind can parse, and that encodes relations to already existing interfaces, we are building on top of. In programming we are always coding against  some lower level interfaces or utilities from some libraries. Similarly in math, we import proven statements into our scope and reference them in our proofs.</p>
 <p>In math, people often introduce definitions that generalize ideas and allow for proving statements <em>at one fell swoop</em>. Arguably, creating abstraction hierarchies is the reason why can efficiently learn existing math. Similarly, in programming,  we introduce new interfaces that require some generic properties, that are sufficient for the implementation details.</p>
 <p>Code refactoring with the goal of reducing dependencies and reusing code can be compared with decoposing a complicated proof into simpler lemmas, which do not need the access the full scope of the argument. In both cases, we are curving out some of the complexity into  its own local scope.</p>
 <p>When mathematicians introduce new notation and conventions, they are essentially  <em>programming bottom up</em>, changing the langage  to suit a problem, as Paul Graham expressed it in <a href="https://www.paulgraham.com/progbot.html">Language and program evolve together</a>. This is a common programming pattern, resulting  in developing libraries, whose functionalities compose.</p>
-<p>The analogies I touched upon originate from <sup id="fnref:1"><a href="#fndef:1" class="fnref">[1]</a></sup>, which discusses the future of mathematics, in light of formal verification methods.</p>
+<p>The analogies I touched upon originate from &#40;<span class="bibref"><a href="#ja">Mathematics and the formal turn</a></span>&#41;, which discusses the future of mathematics, in light of formal verification methods.</p>
 <p>I hope, you find the topic as intriguing as I did, when I saw the similarites for the first time.</p>
-<table class="fndef" id="fndef:1">
-    <tr>
-        <td class="fndef-backref"><a href="#fnref:1">[1]</a></td>
-        <td class="fndef-content"><a href="https://arxiv.org/abs/2311.00007">Mathematics and the formal turn, 2023</a></td>
-    </tr>
-</table>
-
+<h2 id="references"><a href="#references" class="header-anchor">References</a></h2>
+<ul>
+<li><p><a id="ja" class="anchor"></a> Jeremy Avigad. Mathematics and the formal turn. 2023. <a href="https://arxiv.org/abs/2311.00007">arXiv</a></p>
+</li>
+</ul>
 <div class="page-foot">
     <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> Samuel Belko. Last modified: April 06, 2025.
     Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
