@@ -14,7 +14,7 @@ In math, people often introduce definitions that generalize ideas and allow for 
 Similarly, in programming, 
 we introduce new interfaces that require some generic properties, that are just sufficient for the implementation details.
 
-Code refactoring with the goal of reducing interdependencies and reusing code can be compared to decoposing a complicated proof into simpler lemmas, which do not need the access the full scope of the argument. In both cases, we are curving out some of the complexity into 
+Code refactoring with the goal of reducing interdependencies and reusing code can be compared to decomposing a complicated proof into simpler lemmas, which do not need the access to the full scope of the argument. In both cases, we are curving out some of the complexity into 
 its own local scope.
 
 When mathematicians introduce new notation and conventions, they are essentially 
