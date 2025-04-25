@@ -7,9 +7,9 @@ By **Samuel Belko**, published on April 6, 2025.
 > Mathematics has always been about coming up with abstractions that enable us to think more efficiently, communicate precisely, solve hard problems, and reach a stable consensus as to whether our claims are justified.\
 > -- Jeremy Avigad, in \cite{JA}
 
-There is a striking similiarity between extending a complicated codebase and writing down  complicated mathematical theories. The developer and mathematician are both challenged to come up with a structure that a human mind can parse, and that encodes the relations to already existing interfaces, that they are building on top of. In programming we are always coding against some lower level interfaces or utilities from some libraries. Similarly in math, we import proven statements into our scope and reference them in our proofs.
+There is a striking similiarity between extending a complicated codebase and writing down  complicated mathematical theories. The developer and mathematician are both challenged to come up with a structure that a human mind can parse, and that encodes the relations to already existing interfaces, that they are building on top of. In programming, we are always coding against some lower level interfaces or utilities from some libraries. Similarly in math, we import proven statements into our scope and reference them in our proofs.
 
-Code refactoring with the goal of reducing interdependencies and reusing code can be compared to decomposing a complicated proof into simpler lemmas, which do not need the access to the full scope of the argument. In both cases, we are curving out some of the complexity into its own local scope.
+For instance, we can think of refactoring a complicated piece of code as an analogy for a decomposition of a complicated proof into simpler lemmas. Maybe we have identified a repeating construction in some proofs, and we could encapsulate the construction into its own litte lemma. These lemmas do not need to access the full scope of the argument and hopefully lower the overall cognitive load.
 
 When mathematicians introduce new notation and conventions, they are essentially 
 *programming bottom up*, changing the langage 
