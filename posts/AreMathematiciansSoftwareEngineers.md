@@ -30,7 +30,7 @@ We can contrast the above with statements found in \cite{SWE}, such as:
 
 > ... most software development projects today use an incremental approach such as agile development, in which the initial design focuses on a small subset of the overall functionality. This subset is designed, implemented, and then evaluated. Problems with the original design are discovered and corrected, then a few more features are designed, implemented and evaluated. Each iteration exposes problems with the existing design, which are fixed before the next set of features is designed.
 
-We can see that both sources emphasize spending extra effort on redesigning the initial concepts so that at the end, the content as as easy as possible to follow. The contributions are not just a valid proof or a working piece of code, but something, which hopefully facilitates progress by providing a robust infrastructure, to build on top of.
+We can see that both sources emphasize spending extra effort on redesigning the initial concepts so that at the end, the content is as easy as possible to follow. The contributions are not just a valid proof or a working piece of code, but something, which hopefully facilitates progress by providing a robust infrastructure, to build on top of.
 
 The analogies I touched upon originate from \cite{JA}, which discusses the future of mathematics, in light of formal verification methods.
 
