@@ -9,7 +9,7 @@ By **Samuel Belko**, published on April 6, 2025.
 
 There is a striking similiarity between extending a complicated codebase and writing down  complicated mathematical theories. The developer and mathematician are both challenged to come up with a structure that a human mind can parse, and that encodes the relations to already existing interfaces, that they are building on top of. In programming, we are always coding against some lower level interfaces or utilities from some libraries. Similarly in math, we import proven statements into our scope and reference them in our proofs.
 
-For instance, we can think of refactoring a complicated piece of code as an analogy for a decomposition of a complicated proof into simpler lemmas. Maybe we have identified a repeating construction in some proofs, and we could encapsulate the construction into its own litte lemma. These lemmas do not need to access the full scope of the argument and hopefully lower the overall cognitive load.
+For instance, we can think of refactoring a complicated piece of code as an analogy for a decomposition of a complicated proof into simpler lemmas. Maybe we have identified some repeating constructions in some proofs, and we could encapsulate them into their own litte lemmas. These lemmas do not need to access the full scope of the logical argument and hopefully lower the overall cognitive load.
 
 When mathematicians introduce new notation and conventions, they are essentially 
 *programming bottom up*, changing the langage 
