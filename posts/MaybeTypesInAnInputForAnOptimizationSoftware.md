@@ -19,7 +19,7 @@ Furthermore, we define a *maybe type* of a type $A$ as $A + 1$, where $1$ is a s
 
 In our case, we define a singleton type called $\text{NotAvailable}$. For a type $A$, we construct a new type $A + \text{NotAvailable}$, creating an option to not specify a component related data.
 
-Let $ C^\text{input}_i$ denote the input type for component $i$, $C^\text{problem}_i$ denote the type managing the model of component $i$ and $C^\text{solution}_i$ denote the type representing the part of a solution corresponding to component $i$.
+Let $ C^\text{input}_i$ denote the input type for a component $i$, $C^\text{problem}_i$ denote the type managing the model of a component $i$ and $C^\text{solution}_i$ denote the type representing the part of a solution corresponding to a component $i$.
 On a very high level, omitting further inputs, we obtain the following type definitions for my implementation,
 \begin{align*}
     \text{Scenario} &= \prod_{i} ( C^\text{input}_i + \text{NotAvailable}) \\
