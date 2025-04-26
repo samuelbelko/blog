@@ -2,6 +2,7 @@
 
 # Blog entries
 
+- [Maybe Types in an Input for an Optimization Software](/posts/MaybeTypesInAnInputForAnOptimizationSoftware/)\blogdate{(26 April 2025)}
 - [Are Mathematicians Software Engineers in Disguise?](/posts/AreMathematiciansSoftwareEngineers/)\blogdate{(6 April 2025)}
 - [Resources for Learning Julia](/posts/ResourcesForLearningJulia/)\blogdate{(28 May 2024)}
 - [Analogies and Math](/posts/AnalogiesAndMath/)\blogdate{(4 May 2024)}
