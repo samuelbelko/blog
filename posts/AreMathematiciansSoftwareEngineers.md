@@ -11,10 +11,7 @@ There is a striking similiarity between extending a complicated codebase and wri
 
 For instance, we can think of refactoring a complicated piece of code as an analogy for a decomposition of a complicated proof into simpler lemmas. Maybe we have identified some repeating constructions in some proofs, and we could encapsulate them into their own litte lemmas. These lemmas do not need to access the full scope of the logical argument and hopefully lower the overall cognitive load.
 
-When mathematicians introduce new notation and conventions, they are essentially 
-*programming bottom up*, changing the langage 
-to suit a problem, as Paul Graham expressed it in [Language and program evolve together](https://www.paulgraham.com/progbot.html). This is a common programming pattern, resulting 
-in developing libraries, whose functionalities compose.
+When mathematicians introduce new notation and conventions, they are essentially  *programming bottom up*, changing the langage to suit a problem, as Paul Graham expressed it in \cite{Graham}. This is a common programming pattern, resulting in developing libraries, whose functionalities compose.
 
 Furthermore, we can compare the advices of a well-known mathematician Paul Halmos on formulating clean theory expositions, collected in \cite{HA}, with advices for clean software design, discussed in a well-known reference \cite{SWE}.
 
@@ -38,6 +35,7 @@ I hope, you find the topic as intriguing as I did, when I saw the similarites fo
 
 ## References
 
+- \biblabel{JA}{Mathematics and the formal turn} Jeremy Avigad. Mathematics and the formal turn. 2023. [arXiv](https://arxiv.org/abs/2311.00007)
+- \biblabel{Graham}{Language and program evolve together} Paul Graham. Language and program evolve together. 1993. [blog post](https://www.paulgraham.com/progbot.html)
 - \biblabel{HA}{How to Write Mathematics} Paul R. Halmos, How to Write Mathematics. [pdf](https://sites.math.washington.edu/~lind/Resources/Halmos.pdf)
 - \biblabel{SWE}{A Philosophy of Software Design} John Ousterhout. A Philosophy of Software Design. 2018
-- \biblabel{JA}{Mathematics and the formal turn} Jeremy Avigad. Mathematics and the formal turn. 2023. [arXiv](https://arxiv.org/abs/2311.00007)
