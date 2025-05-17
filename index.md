@@ -2,6 +2,7 @@
 
 # Blog entries
 
+- [Exploring Applied Category Theory](/posts/ExploringAppliedCategoryTheory/)\blogdate{(17 May 2025)}
 - [Maybe Types in an Input for an Optimization Software](/posts/MaybeTypesInAnInputForAnOptimizationSoftware/)\blogdate{(26 April 2025)}
 - [Are Mathematicians Software Engineers in Disguise?](/posts/AreMathematiciansSoftwareEngineers/)\blogdate{(6 April 2025)}
 - [Resources for Learning Julia](/posts/ResourcesForLearningJulia/)\blogdate{(28 May 2024)}
