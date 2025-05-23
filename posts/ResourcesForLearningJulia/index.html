@@ -33,7 +33,7 @@
 <li><p><a href="https://book.sciml.ai/notes/02-Optimizing_Serial_Code/">SciML Book: optimizing serial code</a></p>
 <ul>
 <li><p>memory related speedups</p>
-</li>
+<ul>
 <li><p>avoid cache misses</p>
 </li>
 <li><p>column major indexing of matrices</p>
@@ -46,8 +46,10 @@
 </li>
 <li><p>fusing loop operations with broadcasting to avoid allocations of temporary variables</p>
 </li>
-<li><p>function specialization related speedups</p>
+</ul>
 </li>
+<li><p>function specialization related speedups</p>
+<ul>
 <li><p>type inference inside functions &amp; type stability</p>
 </li>
 <li><p>compiler is building a different function for different combinations of input types that is specialized and only works for that type combination</p>
@@ -61,6 +63,8 @@
 <li><p>abstract types don&#39;t help the compiler &#40;but are useful for steering multiple dispatch&#41;</p>
 </li>
 <li><p>function barriers for dealing with type instability &#40;one dynamic dispatch call after which only static dispatch calls follow&#41;</p>
+</li>
+</ul>
 </li>
 </ul>
 </li>
