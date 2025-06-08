@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+  <link rel="stylesheet" href="/css/franklin.css">
+  <link rel="stylesheet" href="/css/basic.css">
+  <link rel="icon" href="/assets/favicon.png">
+  <script data-goatcounter="https://bblog.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+   <title>On «Gestaltung» of Software</title>  
+</head>
+<body>
+  <header>
+<div class="blog-name"><a href="/"> Simple Complexity</a></div>
+<nav>
+  <ul>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/">Blog entries</a></li> 
+  </ul>
+  <img src="/assets/hamburger.svg" id="menu-icon">
+</nav>
+</header>
+
+
+<!-- Content appended here -->
+<div class="franklin-content"><h1 id="on_gestaltung_of_software"><a href="#on_gestaltung_of_software" class="header-anchor">On «Gestaltung» of Software</a></h1>
+<p>By <strong>Samuel Belko</strong>, published on June 8, 2025.</p>
+<p>In this post, I would like to reflect on the content of the book <span class="bibref"><a href="#swe">A Philosophy of Software Design</a></span>, which changed the way I think about programming.</p>
+<p>The title uses the German word <em>Gestaltung</em>, which unfortunately does not have a direct one-word translation in English. A first-order approximation might be design, but to me, Gestaltung conveys something more authentic, combining intention, meaning, aesthetics, and function. It is a deliberate creative process of organizing elements into a coherent whole. This is now how I think about programming.</p>
+<p>At a high level, the book <span class="bibref"><a href="#swe">A Philosophy of Software Design</a></span> draws a distinction between <em>hacking</em> new features and intentionally designing and redesigning abstractions. For instance, there is a chapter on writing comments, where the recommended approach is to first iterate on the comments that specify the main interfaces of classes and public methods. Once the design feels just right, we proceed with the concrete implementation. The focus is on iterating over abstractions, not the implementation.</p>
+<p>For me personally, concept formation is the most interesting part of programming. Possibly, it is my formal math training that makes me genuinely appreciate clean problem decompositions. I consider programming as solving a modeling problem, in which one tries to find the right words to clearly describe a complex system. In the description, everything should have a place, and everything should be in its place.</p>
+<p>Another piece of advice I resonated with was to <em>design it twice</em>. The idea is to explore as many varied designs as possible and evaluate their tradeoffs before settling on one. The guiding principle is to choose a design that makes higher-level software easier to use, even at the cost of a more involved implementation. The codebase should be user-friendly at every level of abstraction, making it enjoyable to work with. Especially, since most lines of code written are extensions of existing software.</p>
+<p>The author makes a thought-provoking remark about how young, smart people often have a hard time embracing the concept of <em>designing it twice</em>. As the author argues, many grow up accustomed to their first ideas being sufficient to earn a good grade.</p>
+<p>In conclusion, after reading the book and reflecting on my own programming experience, I’ve come to believe that the challenges of clean software design are rooted in the clear communication of complex ideas. I used to think of programming as a discipline primarily concerned with algorithms, but the book <span class="bibref"><a href="#swe">A Philosophy of Software Design</a></span> offered a new perspective, placing <em>interfaces</em> at the center of the discussion and implementation at the periphery.</p>
+<h2 id="references"><a href="#references" class="header-anchor">References</a></h2>
+<ul>
+<li><p><a id="swe" class="anchor"></a> John Ousterhout. A Philosophy of Software Design. 2018</p>
+</li>
+</ul>
+<div class="page-foot">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> Samuel Belko. Last modified: June 08, 2025.
+    Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+</div>
+</div><!-- CONTENT ENDS HERE -->
+    
+    
+  </body>
+</html>
