@@ -6,7 +6,7 @@ By **Samuel Belko**, published on June 8, 2025.
 
 In this post, I would like to reflect on the content of the book \cite{SWE}, which changed the way I think about programming.
 
-The title uses the German word *Gestaltung*, which unfortunately does not have a direct one-word translation in English. A first-order approximation might be design, but to me, Gestaltung conveys something more authentic, combining intention, meaning, aesthetics, and function. It is a deliberate creative process of organizing elements into a coherent whole. This is now how I think about programming.
+The title uses the German word *Gestaltung*, which unfortunately does not have a direct one-word translation in English. A first-order approximation might be *design*, but to me, Gestaltung conveys something more personal, combining intention, meaning, aesthetics, and function. It is a deliberate creative process of organizing elements into a coherent whole. This is how I see programming.
 
 At a high level, the book \cite{SWE} draws a distinction between *hacking* new features and intentionally designing and redesigning abstractions. For instance, there is a chapter on writing comments, where the recommended approach is to first iterate on the comments that specify the main interfaces of classes and public methods. Once the design feels just right, we proceed with the concrete implementation. The focus is on iterating over abstractions, not the implementation.
 
