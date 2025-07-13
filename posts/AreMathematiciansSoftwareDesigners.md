@@ -1,6 +1,6 @@
-@def title = "Are Mathematicians Software Engineers in Disguise?"
+@def title = "Are Mathematicians Software Designers in Disguise?"
 
-# Are Mathematicians Software Engineers in Disguise?
+# Are Mathematicians Software Designers in Disguise?
 
 By **Samuel Belko**, published on April 6, 2025.
 
@@ -11,7 +11,7 @@ There is a striking similiarity between extending a complicated codebase and wri
 
 For instance, we can think of refactoring a complicated piece of code as an analogy for a decomposition of a complicated proof into simpler lemmas. Maybe we have identified some repeating constructions in some proofs, and we could encapsulate them into their own litte lemmas. These lemmas do not need to access the full scope of the logical argument and hopefully lower the overall cognitive load.
 
-When mathematicians introduce new notation and conventions, they are essentially  *programming bottom up*, changing the langage to suit a problem, as Paul Graham expressed it in \cite{Graham}. This is a common programming pattern, resulting in developing libraries, whose functionalities compose.
+When mathematicians introduce new notation and conventions, they are essentially  *programming bottom up*, changing the language to suit a problem, as Paul Graham expressed it in \cite{Graham}. This is a common programming pattern, resulting in developing libraries, whose functionalities compose.
 
 Furthermore, we can compare the advices of a well-known mathematician Paul Halmos on formulating clean theory expositions, collected in \cite{HA}, with advices for clean software design, discussed in a well-known reference \cite{SWE}.
 
@@ -31,7 +31,7 @@ We can see that both sources emphasize spending extra effort on redesigning the 
 
 The analogies I touched upon originate from \cite{JA}, which discusses the future of mathematics, in light of formal verification methods.
 
-I hope, you find the topic as intriguing as I did, when I saw the similarites for the first time.
+I hope, you find the topic as intriguing as I did, when I saw the similarities for the first time.
 
 ## References
 
