@@ -12,7 +12,7 @@ some constants $L,U$ and all $x$ holds $ L \leq f_2(x) \leq U$.
 
 Consider a lexicographic problem
 
-$$ \min_{x} \; f_2(x) \quad \text{subject to} \quad f_1(x) \leq \min_{x'} f_1(x'). $$
+$$ \min_{x} \; f_2(x)  \; \text{ subject to } \; f_1(x) \leq \min_{x'} f_1(x'). $$
 
 For some $K>0$, consider a scalarized version of (1) 
 
