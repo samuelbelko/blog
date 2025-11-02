@@ -2,6 +2,7 @@
 
 # Blog entries
 
+- [Modularity Requires Glue](/posts/ModularityRequiresGlue.md)\blogdate{(Nov 2, 2025)}
 - [A Note on Scalarization Error in Lexicographic Optimization](/posts/ANoteOnScalarizationErrorInLexicographicOptimization)\blogdate{(July 25, 2025)}
 - [On «Gestaltung» of Software](/posts/OnGestaltungOfSoftware/)\blogdate{(June 8, 2025)}
 - [Exploring Applied Category Theory](/posts/ExploringAppliedCategoryTheory/)\blogdate{(May 17, 2025)}
