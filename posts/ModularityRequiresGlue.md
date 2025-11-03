@@ -19,4 +19,4 @@ I find the idea of investigating the glue within systems intriguing, as it shift
 Thanks for reading!
 
 [^1]: For example, a [catamorphism](https://en.wikipedia.org/wiki/Catamorphism) generalizes reduction (folds) of recursive data types.
-[^2]: This makes some people uneasy, see [HN](https://news.ycombinator.com/reply?id=45768702&goto=item%3Fid%3D45711003%2345768702).
+[^2]: This makes some people uneasy, see [HN](https://news.ycombinator.com/item?id=45768702).
