@@ -10,7 +10,7 @@ For instance, consider the higher-order function `map` taking `f: A -> B`, `List
 
 This notion of glue extends beyond functional programming. In other paradigms, we also pursue modularity, and hence invent new ways to bind parts together.
 
-For instance, Julia’s multiple dispatch chooses an implementation based on input types, making it a form of contextual, recursive glue for composing behavior. This glue is context-dependent, since it selects the best matching implementation from the methods available in scope[^2].
+For instance, Julia’s multiple dispatch chooses an implementation based on input types, making it a form of contextual, recursive glue for composing behavior. This glue is context-dependent, since it selects the best matching implementation from the methods available in scope.
 
 Similarly, inheritance in object oriented programming is a way to glue changes onto a base class. The glue in this case is merging both data and behavior. Even if the parts are simple, the resulting class might be too complex to work with. It is not as straightforward to decompose such emergent complexity, compared to pattern matching on algebraic data types.
 
@@ -19,4 +19,3 @@ I find the idea of investigating the glue within systems intriguing, as it shift
 Thanks for reading!
 
 [^1]: For example, a [catamorphism](https://en.wikipedia.org/wiki/Catamorphism) generalizes reduction (folds) of recursive data types.
-[^2]: This makes some people uneasy, see [HN](https://news.ycombinator.com/item?id=45768702).
