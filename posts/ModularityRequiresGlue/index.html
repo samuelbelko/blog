@@ -31,25 +31,19 @@
 <p>In <a href="https://www.cs.kent.ac.uk/people/staff/dat/miranda/whyfp90.pdf"><em>Why functional programming matters</em></a> &#40;1989&#41;, John Hughes argues that functional programming is powerful because it enables a high degree of modularity. Modularity demands abstract glue, which in this case is delivered by higher-order functions and lazy evaluation.</p>
 <p>For instance, consider the higher-order function <code>map</code> taking <code>f: A -&gt; B</code>, <code>List&#91;A&#93;</code> and returning <code>List&#91;B&#93;</code> by applying <code>f</code> element-wise. It serves as a specialized kind of glue, useful when a task can be decomposed into applying <code>f</code> across the elements of <code>List&#91;A&#93;</code>. As the paper suggests, each new data type should be equipped with glue-like functionalities that allow us to use it ergonomically. The above example with a <code>List</code> supporting a <code>map</code> can be generalized to algebraic data types &#40;e.g. trees&#41;, featuring higher-order functions for transformation, reduction, and generation from seeds<sup id="fnref:1"><a href="#fndef:1" class="fnref">[1]</a></sup>.</p>
 <p>This notion of glue extends beyond functional programming. In other paradigms, we also pursue modularity, and hence invent new ways to bind parts together.</p>
-<p>For instance, Julia’s multiple dispatch chooses an implementation based on input types, making it a form of contextual, recursive glue for composing behavior. This glue is context-dependent, since it selects the best matching implementation from the methods available in scope<sup id="fnref:2"><a href="#fndef:2" class="fnref">[2]</a></sup>.</p>
+<p>For instance, Julia’s multiple dispatch chooses an implementation based on input types, making it a form of contextual, recursive glue for composing behavior. This glue is context-dependent, since it selects the best matching implementation from the methods available in scope.</p>
 <p>Similarly, inheritance in object oriented programming is a way to glue changes onto a base class. The glue in this case is merging both data and behavior. Even if the parts are simple, the resulting class might be too complex to work with. It is not as straightforward to decompose such emergent complexity, compared to pattern matching on algebraic data types.</p>
 <p>I find the idea of investigating the glue within systems intriguing, as it shifts the perspective from individual parts to the relations between them. Since most complex artifacts are modular, there is a lot of glue to see if we search for it.</p>
 <p>Thanks for reading&#33;</p>
-<p><table class="fndef" id="fndef:1">
+<table class="fndef" id="fndef:1">
     <tr>
         <td class="fndef-backref"><a href="#fnref:1">[1]</a></td>
         <td class="fndef-content">For example, a <a href="https://en.wikipedia.org/wiki/Catamorphism">catamorphism</a> generalizes reduction &#40;folds&#41; of recursive data types.</td>
     </tr>
 </table>
-<table class="fndef" id="fndef:2">
-    <tr>
-        <td class="fndef-backref"><a href="#fnref:2">[2]</a></td>
-        <td class="fndef-content">This makes some people uneasy, see <a href="https://news.ycombinator.com/item?id&#61;45768702">HN</a>.</td>
-    </tr>
-</table>
-</p>
+
 <div class="page-foot">
-    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> Samuel Belko. Last modified: November 03, 2025.
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> Samuel Belko. Last modified: November 04, 2025.
     Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
 </div>
 </div><!-- CONTENT ENDS HERE -->
