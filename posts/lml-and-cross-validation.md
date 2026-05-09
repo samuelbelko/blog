@@ -74,7 +74,7 @@ of the group $\mathcal{D}_g$. Hence, each summand in (5) corresponds to a cross-
 
 Therefore, we can interpret the sum (5) as an exhaustive leave-p-out cross-validation over all possible training sets and all possible left out points. This insight connects Empirical Bayes model selection with traditional cross-validation. See \cite{mll-cv} for details.
 
-However, even with the interpretation of LML as an exhaustive cross-validation, LML is not a suitable proxy for model generalization, as \cite{model-selection} argues. In the decomposition (5), we can observe that there are many terms evaluating predictive performance of the model, when conditioned on few data points. In particular, $p(y_i)$ terms measure purely the fit of the prior. The issue is that generalization means finding a prior such that conditioning on some data, we obtain a posterior with a good predictive performance.
+However, even with the interpretation of LML as an exhaustive cross-validation, LML is not a suitable proxy for model generalization, as \cite{model-selection} argues. In the decomposition (5), we can observe that there are many terms evaluating predictive performance of the model, when conditioned on few data points. In particular, $p(y_i)$ terms measure purely the fit of the prior. The issue is that generalization means finding a prior such that after conditioning on some data, we obtain a posterior with a good predictive performance.
 
 On the other hand, quite remarkably, in some models, we have an analytical formula for LML, i.e., we can efficiently evaluate an exhaustive leave-p-out cross-validation. For instance, this is the case in Gaussian Processes, assuming a Gaussian observation noise.
 
