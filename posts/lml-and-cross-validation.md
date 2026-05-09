@@ -4,7 +4,9 @@
 
 By **Samuel Belko**, published on May 8, 2026.
 
-In this post, I would like to highlight an interesting connection between log marginal likelihood (LML) and cross-validation. The derivation below follows the original proof from the paper \cite{mll-cv}.
+In this post, I would like to highlight a connection between log marginal likelihood (LML) and cross-validation. In fact, log marginal likelihood is the same as exhaustive leave-p-out cross-validation, averaged across all train-test splits.
+
+The derivation below follows the original proof from the paper \cite{mll-cv}.
 
 Consider a statistical model specified by a prior distribution $ \pi(\theta)$ and a likelihood $f(y_{1:n} | \theta)$. The marginal likelihood is defined as
 
@@ -40,7 +42,7 @@ Since the decomposition holds for any permutation of $y_{1:n}$ entries, taking t
 
 $$\log p(y_{1:n}) = \frac{1}{n!} \sum_{j=1}^{n!} \sum_{i = 1}^n \log p(\tilde{y}_i^j | \tilde{y}_{1:i-1}^j).$$
 
-To make the connection with leave-p-out cross-validation apparent, we change the order of summation in (5). We group summands together that are conditioned on the same $y$ entries regardless of the order of entries we condition on. We call the $y$ entries that we are conditioning on within a group a training set, and denote it by $\mathcal{D}_g,$ for a group $g$. Furthermore, we sort the summation by the cardinality of $\mathcal{D}_g$.
+To make the connection with leave-p-out cross-validation apparent, we change the order of summation in (5). We group summands together that are conditioned on the same $y$ entries regardless of the order of entries we are conditioning on. For instance, $p(y_1 | y_2, y_3)$ and $p(y_1 | y_3, y_2)$ are in the same group. We call the $y$ entries that we are conditioning on within a group a training set, and denote it by $\mathcal{D}_g,$ for a group $g$. Furthermore, we sort the summation by the cardinality of $\mathcal{D}_g$.
 
 @@colbox-green
 _Example:_ 
@@ -72,7 +74,9 @@ of the group $\mathcal{D}_g$. Hence, each summand in (5) corresponds to a cross-
 
 Therefore, we can interpret the sum (5) as an exhaustive leave-p-out cross-validation over all possible training sets and all possible left out points. This insight connects Empirical Bayes model selection with traditional cross-validation. See \cite{mll-cv} for details.
 
-However, even with the interpretation of LML as an exhaustive cross-validation, LML is not a suitable proxy for model generalization, as \cite{model-selection} argues. In the decomposition (5), we can observe that there are many terms evaluating predictive performance of the model, when conditioned on few data points. In particular, $p(y_i)$ terms measure purely the fit of the prior and not the predictive performance of the posterior. On the other hand, remarkably, in some models, we have an analytical formula for LML, i.e., we can efficiently evaluate an exhaustive leave-p-out cross-validation. For instance, this is the case in Gaussian Processes, assuming a Gaussian observation noise.
+However, even with the interpretation of LML as an exhaustive cross-validation, LML is not a suitable proxy for model generalization, as \cite{model-selection} argues. In the decomposition (5), we can observe that there are many terms evaluating predictive performance of the model, when conditioned on few data points. In particular, $p(y_i)$ terms measure purely the fit of the prior. The issue is that generalization means finding a prior such that conditioning on some data, we obtain a posterior with a good predictive performance.
+
+On the other hand, quite remarkably, in some models, we have an analytical formula for LML, i.e., we can efficiently evaluate an exhaustive leave-p-out cross-validation. For instance, this is the case in Gaussian Processes, assuming a Gaussian observation noise.
 
 Thanks for reading!
 
