@@ -4,7 +4,7 @@
 
 By **Samuel Belko**, published on May 9, 2026.
 
-In this post, I would like to highlight a connection between log marginal likelihood (LML) and cross-validation. In fact, log marginal likelihood is the same as exhaustive leave-p-out cross-validation, averaged across all train-test splits.
+In this post, I would like to highlight a connection between log marginal likelihood (LML) and cross-validation. In fact, LML is the same as exhaustive leave-p-out cross-validation, averaged across all train-test splits.
 
 The derivation below follows the original proof from the paper \cite{mll-cv}.
 
