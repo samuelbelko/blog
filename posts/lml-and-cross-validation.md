@@ -1,4 +1,4 @@
-@def title = "Maybe Types in an Input for an Optimization Software"
+@def title = "Marginal likelihood is exhaustive leave-p-out cross-validation"
 
 # Marginal likelihood is exhaustive leave-p-out cross-validation
 
