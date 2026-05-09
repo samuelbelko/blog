@@ -2,6 +2,7 @@
 
 # Blog entries
 
+- [Marginal likelihood is exhaustive leave-p-out cross validation](/posts/lml-and-cross-validation)\blogdate{(May 9, 2026)}
 - [Modularity Requires Glue](/posts/ModularityRequiresGlue)\blogdate{(Nov 2, 2025)}
 - [A Note on Scalarization Error in Lexicographic Optimization](/posts/ANoteOnScalarizationErrorInLexicographicOptimization)\blogdate{(July 25, 2025)}
 - [On «Gestaltung» of Software](/posts/OnGestaltungOfSoftware/)\blogdate{(June 8, 2025)}
