@@ -2,12 +2,11 @@
 
 # Welcome!
 
-This is a blog on various topics related to mathematics and software. The name *Simple Complexity* is motivated by the idea that the main added value of theory is an increase in clarity and understanding.[^1] The topics are driven by my curiosity, documenting some of the things that I found interesting. I enjoy formalizing concepts and sharing them with others. I hope you will discover here something interesting!
+Simple Complexity is a blog on mathematics and software. The name captures the idea that the main value of theory is an increase in clarity and understanding.
 
-## Contact
+I'm Samuel Belko, a Machine Learning scientist working on industrial optimization problems. I have a mathematics background from TU Munich, with a focus on optimization and machine learning.
 
-You can send me an email at `samuelbelko@pm.me`, or connect with me on [LinkedIn](https://www.linkedin.com/in/samuelbelko/).
+The topics are driven by my curiosity, revolving around ML and optimization theory, software design, discovering the right abstractions in applied settings.
 
-Thanks for stopping by!
-
-[^1]: The inspiration for the name comes from a TedX event of the same name.
+If something here resonates and you have a related problem or question, I'm happy to talk.
+You can send me an email at `samuelbelko@pm.me` or connect with me on [LinkedIn](https://www.linkedin.com/in/samuelbelko/).
